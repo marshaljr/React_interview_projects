@@ -1,4 +1,4 @@
-[
+const data = [
   {
     id: "1",
     question: "How do I implement dark mode using CSS variables?",
@@ -24,3 +24,5 @@
       "Absolutely. A common 'senior dev' move is using CSS Grid for the macro-layout (the big sections) and Flexbox for the micro-layout (aligning items inside those sections).",
   },
 ];
+
+export default data;

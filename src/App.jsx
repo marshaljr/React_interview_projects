@@ -1,10 +1,11 @@
 import "./App.css";
+import Accordian from "./components/accordian/index";
 
 function App() {
   return (
-    <>
-      <section id="center"></section>
-    </>
+    <div className="App">
+      <Accordian />
+    </div>
   );
 }
 
