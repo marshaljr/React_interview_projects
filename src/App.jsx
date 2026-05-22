@@ -1,10 +1,14 @@
 import "./App.css";
-import Accordian from "./components/accordian/index";
+import ImageSlider from "./components/image-slider";
+// import StarRating from "./components/star-rating";
+// import Accordian from "./components/accordian/index";
 
 function App() {
   return (
     <div className="App">
-      <Accordian />
+      {/* <Accordian /> */}
+      {/* <StarRating noOfStars={8} /> */}
+      <ImageSlider url={"https://picsum.photos/v2/list"} limit={"10"} />
     </div>
   );
 }
