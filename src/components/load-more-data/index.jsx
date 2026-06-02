@@ -7,6 +7,8 @@ export default function LoadMoreData() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    let isCurrentFetch = true;
+
     async function fetchData() {
       try {
         setLoading(true);
@@ -14,38 +16,56 @@ export default function LoadMoreData() {
           `https://dummyjson.com/products?limit=20&skip=${count === 0 ? 0 : count * 20}`,
         );
         const result = await response.json();
-        if (result && result.products && result.products.length) {
+        if (
+          result &&
+          result.products &&
+          result.products.length &&
+          isCurrentFetch
+        ) {
           setProducts((prevProducts) => [...prevProducts, ...result.products]);
-          setLoading(false);
         }
         console.log(result);
       } catch (e) {
         console.log(e);
-        setLoading(false);
+      } finally {
+        if (isCurrentFetch) {
+          setLoading(false);
+        }
       }
     }
     fetchData();
+
+    return () => {
+      isCurrentFetch = false;
+    };
   }, [count]);
 
-  if (loading) {
-    return <div>Loading data! Please wait...</div>;
-  }
   return (
     <div className="container">
-      <div className="products">
-        {products && products.length
-          ? products.map((item, index) => (
-              <div className="product-card" key={`${item.id}-${index}`}>
-                <img src={item.thumbnail} alt={item.title} />
-                <h2>{item.title}</h2>
-                <p>${item.price.toFixed(2)}</p>
-              </div>
-            ))
-          : null}
-      </div>
-      <div className="btn-container">
-        <button onClick={() => setCount(count + 1)}>Load More Products</button>
-      </div>
+      {loading && products.length === 0 ? (
+        <div className="loading-screen">
+          Loading initial data! Please wait...
+        </div>
+      ) : (
+        <>
+          <div className="products">
+            {products && products.length
+              ? products.map((item, index) => (
+                  <div className="product-card" key={`${item.id}-${index}`}>
+                    <img src={item.thumbnail} alt={item.title} />
+                    <h2>{item.title}</h2>
+                    <p>${item.price.toFixed(2)}</p>
+                  </div>
+                ))
+              : null}
+          </div>
+          <div className="btn-container">
+            <button onClick={() => setCount(count + 1)}>
+              Load More Products
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
