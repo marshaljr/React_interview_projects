@@ -34,7 +34,6 @@ export default function LoadMoreData() {
       }
     }
     fetchData();
-
     return () => {
       isCurrentFetch = false;
     };
