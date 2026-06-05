@@ -1,4 +1,4 @@
-export const menu = [
+const menus = [
   {
     label: "Home",
     link: "/home",
@@ -28,6 +28,16 @@ export const menu = [
       {
         label: "Mobile Development",
         link: "/services/mobile-development",
+        children: [
+          {
+            label: "iOS Development",
+            link: "/services/mobile-development/ios",
+          },
+          {
+            label: "Android Development",
+            link: "/services/mobile-development/android",
+          },
+        ],
       },
     ],
   },
@@ -36,3 +46,4 @@ export const menu = [
     link: "/contact",
   },
 ];
+export default menus;
