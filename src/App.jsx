@@ -1,5 +1,6 @@
 import "./App.css";
-import LightDarkMode from "./components/light-dark-mode";
+import ScrollIndicator from "./components/scroll-indicator";
+// import LightDarkMode from "./components/light-dark-mode";
 // import QRCodeGenerator from "./components/qr-code-generator";
 // import TreeMenu from "./components/tree-menu";
 // import menus from "./components/tree-menu/data";
@@ -17,7 +18,8 @@ function App() {
       {/* <LoadMoreData /> */}
       {/* <TreeMenu menus={menus} /> */}
       {/* <QRCodeGenerator /> */}
-      <LightDarkMode />
+      {/* <LightDarkMode /> */}
+      <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
     </div>
   );
 }
