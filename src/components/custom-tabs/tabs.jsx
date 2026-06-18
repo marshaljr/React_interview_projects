@@ -1,4 +1,4 @@
-export default function Tabs({ tabsContent, onChange }) {
+export default function Tabs({ tabsContent }) {
   return (
     <div className="wrapper">
       <div className="heading">
